@@ -1,0 +1,28 @@
+{
+  "name": "vue2-waterfall",
+  "version": "1.0.0",
+  "description": "瀑布流组件",
+  "main": "./dist/vue2-waterfall.js",
+  "module": "./dist/vue2-waterfall.js",
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "vue": "^2.6.14",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "devDependencies": {
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "vue",
+    "vue-waterfall",
+    "waterfall",
+    "masonry"
+  ],
+  "author": "zengxiangfu",
+  "license": "ISC"
+}
