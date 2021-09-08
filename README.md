@@ -73,4 +73,4 @@ export default {
 
 ### 源码地址
 
-源码地址请参见 <a href="" target="_blank">github</a>
+源码地址请参见 <a href="https://github.com/zengxiangfu/vue2-waterfall" target="_blank">github</a>
