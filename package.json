@@ -17,11 +17,21 @@
   "scripts": {
     "build": "webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zengxiangfu/vue2-waterfall"
+  },
   "keywords": [
     "vue",
+    "vue2",
     "vue-waterfall",
+    "vue2-waterfall",
+    "vue-waterfall2",
     "waterfall",
-    "masonry"
+    "masonry",
+    "瀑布流",
+    "瀑布",
+    "瀑布流组件"
   ],
   "author": "zengxiangfu",
   "license": "ISC"

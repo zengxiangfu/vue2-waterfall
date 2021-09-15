@@ -18,10 +18,13 @@ Vue.use(Waterfall);
   :pageData="pageData"
   :col="2"
   :colStyle="{display:'flex',flexDirection:'column',alignItems:'center'}"
+  query-sign="#cardItem"
   @wfLoad="onLoad"
+  @ObserveDataTotal="ObserveDataTotal"
 >
   <template #default="{ item, col, index}">
     <!--  slot 内容  good-card：事例组件 -->
+    <good-card :item="item" id="cardItem" />
   </template>
 </Waterfall>
 ```
@@ -40,6 +43,9 @@ export default {
         const data = request(....)
         // 当前页的数据
         this.pageData =data;
+    },
+     ObserveDataTotal(length) {
+      console.log(length);
     }
   }
 }
@@ -55,12 +61,14 @@ export default {
 | immediateCheck | 立即检查                                    | `Boolean`        | `true`  | -    |
 | offset         | 底部到视口触底距离                          | `String｜Number` | `300`   | -    |
 | colStyle       | 每列的样式                                  | `Object`         | `{}`    | -    |
+| querySign      | 内容标识（querySelectorAll选择器）            | `String`         | `必须项`    | -    |
 
 ### Event
 
 | 事件名 | 说明                                 | 参数 |
 | ------ | ------------------------------------ | ---- |
 | wfLoad | 滚动条与底部距离小于 `offset` 时触发 | -    |
+|ObserveDataTotal| 未渲染的数据总数 | length |
 
 ### Slot
 
