@@ -5,7 +5,7 @@
 ### 使用指南
 
 ```javascript
-import { Waterfall } from "vue2-waterfall";
+import { Waterfall } from "waterfall-vue2";
 Vue.use(Waterfall);
 ```
 
@@ -16,13 +16,13 @@ Vue.use(Waterfall);
 ```html
 <Waterfall
   :pageData="pageData"
-  :col="2"
+  :columnCount="2"
   :colStyle="{display:'flex',flexDirection:'column',alignItems:'center'}"
   query-sign="#cardItem"
   @wfLoad="onLoad"
   @ObserveDataTotal="ObserveDataTotal"
 >
-  <template #default="{ item, col, index}">
+  <template #default="{ item, columnIndex, index}">
     <!--  slot 内容  good-card：事例组件 -->
     <good-card :item="item" id="cardItem" />
   </template>
@@ -55,11 +55,11 @@ export default {
 
 | 参数           | 说明                                        | 类型             | 默认值  | 版本 |
 | -------------- | ------------------------------------------- | ---------------- | ------- | ---- |
-| col            | 列数                                        | `Number`         | 2       | -    |
+| columnCount            | 列数                                        | `Number`         | 2       | -    |
 | pageData       | 当前 pageIndex 请求的数据（非多页累加数据） | `Array`          | []      | -    |
 | resetSign      | 重置数据（清空每列数据）                    | `Boolean`        | `false` | -    |
 | immediateCheck | 立即检查                                    | `Boolean`        | `true`  | -    |
-| offset         | 底部到视口触底距离                          | `String｜Number` | `300`   | -    |
+| offset         | 触发加载的距离阈值，单位为px                          | `String｜Number` | `300`   | -    |
 | colStyle       | 每列的样式                                  | `Object`         | `{}`    | -    |
 | querySign      | 内容标识（querySelectorAll选择器）            | `String`         | `必须项`    | -    |
 
@@ -75,7 +75,7 @@ export default {
 | 名称    | 说明                 |
 | ------- | -------------------- |
 | default | 插槽内容             |
-| col     | 当前内容所在的列     |
+| columnIndex     | 当前内容所在的列     |
 | item    | 单条数据             |
 | index   | 当前数据所在列的下标 |
 

@@ -2,7 +2,7 @@
   <div>
     <div style="width:100%">
       <div
-        v-for="i in col"
+        v-for="i in columnCount"
         :key="i"
         :ref="colNames[i] + tailSign"
         style="float:left;overflow-x:hidden"
@@ -11,7 +11,7 @@
       >
         <template v-for="(item, index) in colListData[colNames[i] + tailSign]">
           <div :key="i + '-' + index">
-            <slot :item="item" :col="i" :index="index" />
+            <slot :item="item" :columnIndex="i" :index="index" />
           </div>
         </template>
       </div>
@@ -26,7 +26,7 @@ export default {
   name: 'Waterfall',
   props: {
     // 列数
-    col: {
+    columnCount: {
       type: Number,
       default: 2,
     },
@@ -84,14 +84,14 @@ export default {
   },
   computed: {
     colWidth() {
-      return 100 / Number(this.col || 2) + '%'
+      return 100 / Number(this.columnCount || 2) + '%'
     },
     _offset() {
       return Number(this.offset)
     },
   },
   watch: {
-    col: {
+    columnCount: {
       immediate: true,
       handler: function (val) {
         for (let i = 1; i <= val; i++) {
