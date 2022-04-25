@@ -101,8 +101,7 @@ export default {
       },
     },
     pageData(value = []) {
-      if (!value.length) return
-      if (IntersectionObserver) {
+      if ('IntersectionObserver' in window) {
         // 判断当前是否需要重置
         if (this.resetSign) {
           // 重置断开当前全部监控数据
@@ -110,11 +109,13 @@ export default {
           Object.keys(this.colListData).forEach((key) => {
             this.colListData[key] = []
           })
+          if (!value.length) return
           this.observeData = [...value]
           this.$nextTick(() => {
             this.insetData()
           })
         } else {
+          if (!value.length) return
           this.observeData = [...this.observeData||[], ...value]
           // 插入数据
           this.insetData()
@@ -154,7 +155,7 @@ export default {
     },
   },
   created() {
-    if (IntersectionObserver) {
+    if ('IntersectionObserver' in window) {
       this.intersectionObserve = new IntersectionObserver(
         (entries) => {
           if (this.observeData.length) {
@@ -276,8 +277,8 @@ export default {
 
   beforeDestroy() {
     this.scrollTarget.removeEventListener('scroll', this.check)
-    this.mutationObserve && this.mutationObserve.disconnect()
-    this.mutationObserve = null
+    this.intersectionObserve && this.intersectionObserve.disconnect()
+    this.intersectionObserve = null
   },
 }
 </script>
